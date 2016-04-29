@@ -32,6 +32,17 @@ public class MyMath {
 		return quotient;
 	}
 
+	// checks whether number passed in is prime or not
+	public static boolean evalPrime (double number) {
+		System.out.println("eval prime dis number: " + number);
+		for (int i = 2; i <= Math.sqrt(number); i++) {
+			if (number % i == 0) {
+				return false;
+			}
+		}
+		return true;
+	}
+
 	// A static method which let the user know if there is a clean division with
 	// no remainder
 	public static boolean hasCleanDivision (double number, double number2) {
@@ -96,6 +107,14 @@ public class MyMath {
 		mathList.add(c);
 		setResult(getResult() / num);
 		return getTotal();
+	}
+
+	// Nothing to do here, an instance version just call the static version and
+	// passes in the total of what is saved in the instance's variable double
+	// result (Truncating it to an int by a cast)
+	public boolean evalPrime () {
+		System.out.println("PUBLIC eval prime method");
+		return MyMath.evalPrime(getTotal());
 	}
 
 	/**

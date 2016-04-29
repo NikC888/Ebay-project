@@ -1,12 +1,12 @@
-#### Advanced Project Master Branch
+#### Ebay project
 
-### 4/20/2016
+### 4/28/2016
 
-Basic structure for future projects, for core working directory
+Ebay project structure for automation tests and stuff
 
 * Git
 * Java 7
 * Maven
-
+* Selenium
 
 

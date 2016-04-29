@@ -9,14 +9,11 @@
  */
 package com.sqa.nc.util.helpers.math;
 
+import static org.testng.Assert.*;
+
 import java.util.*;
 
-import org.junit.*;
-import org.junit.runner.*;
-import org.junit.runners.*;
-import org.junit.runners.Parameterized.*;
-
-import com.sqa.nc.util.helpers.math.*;
+import org.testng.annotations.*;
 
 /**
  * MyMathTest //ADDD (description of class)
@@ -29,10 +26,9 @@ import com.sqa.nc.util.helpers.math.*;
  * @version 1.0.0
  * @since 1.0
  */
-@RunWith (Parameterized.class)
 public class MultiplicationTests {
 
-	@Parameters
+	@DataProvider
 	public static Object[][] getData () {
 		Object[][] data = {
 							{ new double[] { 2.0, 3.0, 5.0 }, 30.0 },
@@ -45,35 +41,14 @@ public class MultiplicationTests {
 		return data;
 	}
 
-	private double expectedResult;
-	private double numbers[];
-
-	public MultiplicationTests (double[] numbers, double expectedResult) {
-		super();
-		this.numbers = numbers;
-		this.expectedResult = expectedResult;
-	}
-
-	@Test
-	public void testMultNumbers () {
-		double actualResult = MyMath.multNumbers(this.numbers);
-		String numbersString = Arrays.toString(this.numbers);
+	@Test (dataProvider = "getData")
+	public void testMultNumbers (double[] numbers, double expectedResult) {
+		double actualResult = MyMath.multNumbers(numbers);
+		String numbersString = Arrays.toString(numbers);
 		String message = String.format("the product of multiplying all numbers %s together is %.1f", numbersString,
 				actualResult);
 		System.out.println(message);
-		Assert.assertEquals(message, this.expectedResult, actualResult, 0);
+		// Assert.assertEquals(message, this.expectedResult, actualResult, 0);
+		assertEquals(actualResult, expectedResult, 0, message);
 	}
-	// @Test
-	// @Ignore
-	// public void testPowerNumber () {
-	// double actualResult;
-	// double expectedResult = this.expectedResult;
-	// double num = this.num;
-	// double power = this.power;
-	// actualResult = MyMath.powerNumber(num, power);
-	// String message = String.format("the result of %.0f to the power of %.0f
-	// is %.0f", num, power, actualResult);
-	// System.out.println(message);
-	// Assert.assertEquals(message, expectedResult, actualResult, 0);
-	// }
 }

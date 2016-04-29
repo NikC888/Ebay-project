@@ -9,7 +9,7 @@
  */
 package com.sqa.nc.util.helpers;
 
-import org.junit.*;
+import org.testng.annotations.*;
 
 /**
  * AppBasicsTest //ADDD (description of class)
@@ -25,53 +25,31 @@ import org.junit.*;
 public class AppBasicsTest {
 
 	static String appName = "NC Test";
-
 	static String username;
 
-	/**
-	 * @throws java.lang.Exception
-	 */
 	@BeforeClass
 	public static void setUpBeforeClass () throws Exception {
 	}
 
-	/**
-	 * @throws java.lang.Exception
-	 */
 	@AfterClass
 	public static void tearDownAfterClass () throws Exception {
 	}
 
-	/**
-	 * @throws java.lang.Exception
-	 */
-	@Before
+	@BeforeMethod
 	public void setUp () throws Exception {
 	}
 
-	/**
-	 * @throws java.lang.Exception
-	 */
-	@After
+	@AfterMethod
 	public void tearDown () throws Exception {
 	}
 
-	/**
-	 * Test method for
-	 * {@link com.sqa.nc.util.helpers.AppBasics#farewellUser(java.lang.String, java.lang.String)}
-	 * .
-	 */
-	@Test
-	@Ignore
+
+	@Test (enabled = false, priority = 100)
 	public void testFarewellUser () {
 		AppBasics.farewellUser(username, appName);
 	}
 
-	/**
-	 * Test method for
-	 * {@link com.sqa.nc.util.helpers.AppBasics#welcomeUserAndGetUsername(java.lang.String)}.
-	 */
-	@Test
+	@Test (priority = 1)
 	public void testWelcomeUser () {
 		username = AppBasics.welcomeUserAndGetUsername(appName);
 	}
